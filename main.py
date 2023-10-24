@@ -32,7 +32,7 @@ for i in range(10):
                                                       lr = 0.001,
                                                       wd = 5e-3,
                                                       random_seed = 1234,
-                                                      model = 'GATNCF',
+                                                      model = 'ANCNMDA',
                                                       MLP_num_layers = 3
                                                       )
     plot_auc_curves(fprs, tprs, auc, i+1, 'auc')
