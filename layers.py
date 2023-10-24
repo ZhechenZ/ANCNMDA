@@ -85,19 +85,4 @@ class MultiHeadLayer(nn.Module):
             return torch.mean(torch.stack(head_outs), dim=0)  # dim=0,上下拼接
 
 
-"""
-warnings.filterwarnings("ignore")
-path='C:\\Users\\13734\\Desktop\\Data\\ex_data'
-random_seed=1234
-ID, IM, samples, g= build_graph(path, random_seed)
-gat=MultiHeadLayer(G=g,num_heads=8,dropout=1e-3,slope=0.2,feature_attn_size=64)
-h_agg = gat(g)
-disease = h_agg[:383] #383 * 512 tensor类型
-mirna = h_agg[383:]  #495 * 512 tensor类型
-#rint(mirna.shape[0],mirna.shape[1]) 
-#gat = GATLayer(g,64,1e-3,0.2)
-#print(disease)
-#gat = MultiHeadLayer(g, 8, dropout = 0.01, slope = 0.2, feature_attn_size = 64)
-#h_g = gat(g)
-#print(h_g)
-"""
+
