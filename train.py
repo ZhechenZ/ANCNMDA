@@ -10,7 +10,7 @@ import torch.nn as nn
 import random
 import pandas as pd
 from load_data import build_graph
-from model import GATNCF
+from model import ANCNMDA
 from sklearn.model_selection import KFold
 from sklearn import metrics
 import time
@@ -99,8 +99,8 @@ def Train(path, epochs, attn_heads, attn_size, out_dim, dropout, MLP_num_layers,
         g_test = g_test.to(device)
         print('### Training Samples :', len(train_samples[:, 0]))
         print('### Testing Samples :', len(test_samples[:, 0]))
-        if model == 'GATNCF':
-            model = GATNCF(
+        if model == 'ANCNMDA':
+            model = ANCNMDA(
                 G=g,
                 feature_attn_size=attn_size,
                 num_layers=MLP_num_layers,
