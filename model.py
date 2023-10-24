@@ -15,10 +15,10 @@ import torch.nn.functional as F
 
 
 
-class GATNCF(nn.Module):
+class ANCNMDA(nn.Module):
     def __init__(self, G, feature_attn_size, num_layers, num_heads, num_diseases, num_mirnas,
                  d_sim_dim, m_sim_dim, out_dim, dropout, slope):
-        super(GATNCF, self).__init__()
+        super(ANCNMDA, self).__init__()
         self.G = G
         self.feature_attn_size = feature_attn_size
         self.num_heads = num_heads
