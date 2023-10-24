@@ -10,10 +10,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class GATLayer(nn.Module):
+class Layer(nn.Module):
     def __init__(self, G, feature_attn_size, dropout, slope):  # dropout参数为了防止过拟合而设定
 
-        super(GATLayer, self).__init__()
+        super(Layer, self).__init__()
 
         self.disease_nodes = G.filter_nodes(lambda nodes: nodes.data['type'] == 1)  # list->[0->382]
         self.mirna_nodes = G.filter_nodes(lambda nodes: nodes.data['type'] == 0)  # list->[383->877]
@@ -75,7 +75,7 @@ class MultiHeadLayer(nn.Module):
         self.feature_attn_size = feature_attn_size
         self.heads = nn.ModuleList()
         for i in range(num_heads):
-            self.heads.append(GATLayer(G, feature_attn_size, dropout, slope))
+            self.heads.append(Layer(G, feature_attn_size, dropout, slope))
 
     def forward(self, G):
         head_outs = [attn_head(G) for attn_head in self.heads]
